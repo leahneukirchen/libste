@@ -1,0 +1,60 @@
+LIBSTE(3)                  Library Functions Manual                  LIBSTE(3)
+
+NAME
+     stecpy, stecpe, stechr, steprn – string library based on string ends
+
+SYNOPSIS
+     #include <ste.h>
+
+     char *
+     stecpy(char *dst, char *end, const char *src);
+
+     char *
+     stecpe(char *dst, char *dstend, const char *src, const char *srcend);
+
+     char *
+     stechr(const char *src, const char *end, int c);
+
+     char *
+     steprn(char *dst, char *end, const char *fmt, ...);
+
+DESCRIPTION
+     libste provides four useful functions for dealing with strings.
+
+     stecpy copies the NUL-terminated string src to dst, but writes no
+     characters beyond end.  If any characters are copied, dst will be NUL-
+     terminated and the return value is a pointer to the NUL byte.  On
+     truncation, end is returned.
+
+     stecpe copies the string between src and srcend to dst, but writes no
+     characters beyond dstend.  If any characters are copied, dst will be NUL-
+     terminated and the return value is a pointer to the NUL byte.  On
+     truncation, end is returned.
+
+     stechr returns a pointer to the first occurence of c (converted to a
+     char) in the NUL-terminated string pointed to by src, but reads no
+     characters beyond end.  If c is not found, stecpy returns a pointer to
+     the first NUL byte in src, or end if none was found.
+
+     steprn uses vsnprintf(3) to write formatted output to dst, but writes no
+     characters beyond end.  If any characters are written, dst will be NUL-
+     terminated and the return value is a pointer to the NUL byte.  On
+     truncation, end is returned.
+
+     Note that it is safe to pass the return value of all functions listed
+     above as argument for dst when the same end is reused.  In this case, the
+     function call does nothing but return dst again.  At any point,
+     truncation can be checked by comparing the return value to end.
+
+AUTHORS
+     Leah Neukirchen <leah@vuxu.org>
+
+LICENSE
+     libste is in the public domain.
+
+     To the extent possible under law, the creator of this work has waived all
+     copyright and related or neighboring rights to this work.
+
+     http://creativecommons.org/publicdomain/zero/1.0/
+
+Void Linux                     November 5, 2021                     Void Linux

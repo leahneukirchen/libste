@@ -1,0 +1,115 @@
+.Dd November 5, 2021
+.Dt LIBSTE 3
+.Os
+.Sh NAME
+.Nm stecpy ,
+.Nm stecpe ,
+.Nm stechr ,
+.Nm steprn
+.Nd string library based on string ends
+.Sh SYNOPSIS
+.In ste.h
+.Ft "char *"
+.Fn stecpy "char *dst" "char *end" "const char *src"
+.Ft "char *"
+.Fn stecpe "char *dst" "char *dstend" "const char *src" "const char *srcend"
+.Ft "char *"
+.Fn stechr "const char *src" "const char *end" "int c"
+.Ft "char *"
+.Fn steprn "char *dst" "char *end" "const char *fmt" "..."
+.Sh DESCRIPTION
+.Nm libste
+provides four useful functions for dealing with strings.
+.Pp
+.Nm stecpy
+copies the NUL-terminated string
+.Fa src
+to
+.Fa dst ,
+but writes no characters beyond
+.Fa end .
+If any characters are copied,
+.Fa dst
+will be NUL-terminated
+and the return value is a pointer to the NUL byte.
+On truncation,
+.Fa end
+is returned.
+.Pp
+.Nm stecpe
+copies the string between
+.Fa src
+and
+.Fa srcend
+to
+.Fa dst ,
+but writes no characters beyond
+.Fa dstend .
+If any characters are copied,
+.Fa dst
+will be NUL-terminated
+and the return value is a pointer to the NUL byte.
+On truncation,
+.Fa end
+is returned.
+.Pp
+.Nm stechr
+returns a pointer to the first occurence of
+.Fa c
+.Pq converted to a Vt char
+in the NUL-terminated string pointed to by
+.Fa src ,
+but reads no characters beyond
+.Fa end .
+If
+.Fa c
+is not found,
+.Nm
+returns a pointer to the first NUL byte in
+.Fa src ,
+or
+.Fa end
+if none was found.
+.Pp
+.Nm steprn
+uses
+.Xr vsnprintf 3
+to write formatted output to
+.Fa dst ,
+but writes no characters beyond
+.Fa end .
+If any characters are written,
+.Fa dst
+will be NUL-terminated
+and the return value is a pointer to the NUL byte.
+On truncation,
+.Fa end
+is returned.
+.Pp
+Note that it is safe to pass the return value of all functions listed above
+as argument for
+.Fa dst
+when the same
+.Fa end
+is reused.
+In this case, the function call does nothing but return
+.Fa dst
+again.
+At any point, truncation can be checked by comparing the return value to
+.Fa end .
+.\" .Sh RETURN VALUES
+.\" .Sh SEE ALSO
+.\" .Sh STANDARDS
+.\" .Sh HISTORY
+.Sh AUTHORS
+.An Leah Neukirchen Aq Mt leah@vuxu.org
+.Sh LICENSE
+.Nm libste
+is in the public domain.
+.Pp
+To the extent possible under law,
+the creator of this work
+has waived all copyright and related or
+neighboring rights to this work.
+.Pp
+.Lk http://creativecommons.org/publicdomain/zero/1.0/
