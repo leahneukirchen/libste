@@ -10,7 +10,7 @@ SYNOPSIS
      stecpy(char *dst, char *end, const char *src);
 
      char *
-     stecpe(char *dst, char *dstend, const char *src, const char *srcend);
+     stecpe(char *dst, char *end, const char *src, const char *srcend);
 
      char *
      stechr(const char *src, const char *end, int c);
@@ -27,7 +27,7 @@ DESCRIPTION
      truncation, end is returned.
 
      stecpe copies the string between src and srcend to dst, but writes no
-     characters beyond dstend.  If any characters are copied, dst will be NUL-
+     characters beyond end.  If any characters are copied, dst will be NUL-
      terminated and the return value is a pointer to the NUL byte.  On
      truncation, end is returned.
 

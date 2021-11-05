@@ -12,7 +12,7 @@
 .Ft "char *"
 .Fn stecpy "char *dst" "char *end" "const char *src"
 .Ft "char *"
-.Fn stecpe "char *dst" "char *dstend" "const char *src" "const char *srcend"
+.Fn stecpe "char *dst" "char *end" "const char *src" "const char *srcend"
 .Ft "char *"
 .Fn stechr "const char *src" "const char *end" "int c"
 .Ft "char *"
@@ -44,7 +44,7 @@ and
 to
 .Fa dst ,
 but writes no characters beyond
-.Fa dstend .
+.Fa end .
 If any characters are copied,
 .Fa dst
 will be NUL-terminated
