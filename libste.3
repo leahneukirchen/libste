@@ -101,6 +101,14 @@ At any point, truncation can be checked by comparing the return value to
 .\" .Sh SEE ALSO
 .\" .Sh STANDARDS
 .\" .Sh HISTORY
+.Sh IMPLEMENTATION DETAILS
+.Nm libste
+is written in portable C99.
+.Pp
+Functions do not use vectorization to keep code size small
+and because the inputs are expected to be small enough to not benefit from it.  
+.Pp
+The functions can be vendored or inlined into your codebase easily.
 .Sh AUTHORS
 .An Leah Neukirchen Aq Mt leah@vuxu.org
 .Sh LICENSE

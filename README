@@ -46,6 +46,14 @@ DESCRIPTION
      function call does nothing but return dst again.  At any point,
      truncation can be checked by comparing the return value to end.
 
+IMPLEMENTATION DETAILS
+     libste is written in portable C99.
+
+     Functions do not use vectorization to keep code size small and because
+     the inputs are expected to be small enough to not benefit from it.
+
+     The functions can be vendored or inlined into your codebase easily.
+
 AUTHORS
      Leah Neukirchen <leah@vuxu.org>
 
