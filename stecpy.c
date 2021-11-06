@@ -1,7 +1,7 @@
 #include <stddef.h>
 
 char *
-stecpy(char *dst, const char *end, const char *src)
+stecpy(char *dst, char *end, const char *src)
 {
         if (dst >= end)
                 return dst;
