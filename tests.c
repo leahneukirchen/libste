@@ -16,7 +16,7 @@ is(char *desc, int ok)
 int
 main()
 {
-	printf("1..39\n");
+	printf("1..40\n");
 
 	printf("# stecpy\n");
 
@@ -54,6 +54,10 @@ main()
 	is("empty append works", strlen(buf) == 3);
 	is("return value is unchanged", pos == prevpos);
 
+	pos = buf;
+	pos = stecpy(pos, end, "xyz");
+	pos = stecpy(pos, pos, "foo");
+	is("final append works", strlen(buf) == 3);
 
 	printf("# steprn\n");
 
