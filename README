@@ -33,7 +33,7 @@ DESCRIPTION
 
      stechr returns a pointer to the first occurence of c (converted to a
      char) in the NUL-terminated string pointed to by src, but reads no
-     characters beyond end.  If c is not found, stecpy returns a pointer to
+     characters beyond end.  If c is not found, stechr returns a pointer to
      the first NUL byte in src, or end if none was found.
 
      steprn uses vsnprintf(3) to write formatted output to dst, but writes no
