@@ -1,3 +1,5 @@
+CFLAGS=-g -O2 -Wall -Wno-switch -Wextra -Wwrite-strings
+
 all: libste.a example
 
 libste.a: stechr.o stecpe.o stecpy.o steprn.o

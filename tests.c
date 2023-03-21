@@ -6,7 +6,7 @@
 static int status;
 
 void
-is(char *desc, int ok)
+is(const char *desc, int ok)
 {
 	if (!ok)
 		status = 1;

@@ -11,13 +11,13 @@
 int
 main(int argc, char *argv[])
 {
-	char *path = getenv("PATH");
+	const char *path = getenv("PATH");
 	if (!path)
 	    path = "";
 
-	char *program = argc > 1 ? argv[1] : "xyzzy";
+	const char *program = argc > 1 ? argv[1] : "xyzzy";
 
-	char *pathend = path + strlen(path);
+	const char *pathend = path + strlen(path);
 
 	char buf[PATH_MAX];
 	char *bufend = buf + sizeof buf;
