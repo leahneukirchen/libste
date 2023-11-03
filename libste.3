@@ -12,6 +12,8 @@
 .Ft "char *"
 .Fn stecpy "char *dst" "char *end" "const char *src"
 .Ft "char *"
+.Fn steccpy "char *dst" "char *end" "const char *src" "int c"
+.Ft "char *"
 .Fn stecpe "char *dst" "char *end" "const char *src" "const char *srcend"
 .Ft "char *"
 .Fn stechr "const char *src" "const char *end" "int c"
@@ -19,7 +21,7 @@
 .Fn steprn "char *dst" "char *end" "const char *fmt" "..."
 .Sh DESCRIPTION
 .Nm libste
-provides four useful functions for dealing with strings.
+provides five useful functions for dealing with strings.
 .Pp
 .Nm stecpy
 copies the NUL-terminated string
@@ -27,6 +29,24 @@ copies the NUL-terminated string
 to
 .Fa dst ,
 but writes no characters beyond
+.Fa end .
+If any characters are copied,
+.Fa dst
+will be NUL-terminated
+and the return value is a pointer to the NUL byte.
+On truncation,
+.Fa end
+is returned.
+.Pp
+.Nm steccpy
+copies the NUL-terminated string
+.Fa src
+to
+.Fa dst ,
+stopping when the character
+.Fa c
+is found.
+It writes no characters beyond
 .Fa end .
 If any characters are copied,
 .Fa dst
