@@ -2,7 +2,7 @@ CFLAGS=-g -O2 -Wall -Wno-switch -Wextra -Wwrite-strings
 
 all: libste.a example
 
-libste.a: stechr.o stecpe.o stecpy.o steprn.o
+libste.a: stechr.o stecpe.o stecpy.o steccpy.o steprn.o
 	$(AR) $(ARFLAGS) $@ $^
 
 example: example.o libste.a

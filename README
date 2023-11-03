@@ -10,6 +10,9 @@ SYNOPSIS
      stecpy(char *dst, char *end, const char *src);
 
      char *
+     steccpy(char *dst, char *end, const char *src, int c);
+
+     char *
      stecpe(char *dst, char *end, const char *src, const char *srcend);
 
      char *
@@ -19,12 +22,17 @@ SYNOPSIS
      steprn(char *dst, char *end, const char *fmt, ...);
 
 DESCRIPTION
-     libste provides four useful functions for dealing with strings.
+     libste provides five useful functions for dealing with strings.
 
      stecpy copies the NUL-terminated string src to dst, but writes no
      characters beyond end.  If any characters are copied, dst will be NUL-
      terminated and the return value is a pointer to the NUL byte.  On
      truncation, end is returned.
+
+     steccpy copies the NUL-terminated string src to dst, stopping when the
+     character c is found.  It writes no characters beyond end.  If any
+     characters are copied, dst will be NUL-terminated and the return value is
+     a pointer to the NUL byte.  On truncation, end is returned.
 
      stecpe copies the string between src and srcend to dst, but writes no
      characters beyond end.  If any characters are copied, dst will be NUL-

@@ -16,7 +16,7 @@ is(const char *desc, int ok)
 int
 main()
 {
-	printf("1..40\n");
+	printf("1..49\n");
 
 	printf("# stecpy\n");
 
@@ -123,6 +123,27 @@ main()
 	is("returned end of string instead", w == buf2 + strlen(buf2));
 	char *y = stechr(buf2, buf2 + 6, 'y');
 	is("y not found in first 6 chars", y == buf2 + 6);
+
+
+	printf("# steccpy\n");
+	pos = buf;
+	pos = steccpy(pos, end, "abc,def", ',');
+	is("1x3 = 3", strlen(buf) == 3);
+	pos = steccpy(pos, end, "def:ghijkl", ':');
+	is("2x3 = 6", strlen(buf) == 6);
+	pos = steccpy(pos, end, ":ghi", ':');
+	pos = steccpy(pos, end, "ghi", ':');
+	is("3x3 = 9", strlen(buf) == 9);
+	pos = steccpy(pos, end, "jkl", '\0');
+	is("4x3 = 12", strlen(buf) == 12);
+	pos = steccpy(pos, end, "mnopqst", '!');
+	is("5x3 = 15", strlen(buf) == 15);
+	pos = steccpy(pos, end, "full", '!');
+	is("buffer is full", strlen(buf) == 15);
+	is("return value is end", pos == end);
+	pos = steccpy(pos, end, "fuller", 'r');
+	is("buffer doesn't get fuller", strlen(buf) == 15);
+	is("return value is end", pos == end);
 
 
 	return status;
