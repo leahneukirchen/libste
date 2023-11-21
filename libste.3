@@ -19,6 +19,8 @@
 .Fn stechr "const char *src" "const char *end" "int c"
 .Ft "char *"
 .Fn steprn "char *dst" "char *end" "const char *fmt" "..."
+.Ft "char *"
+.Fn steprl "char *dst" "char *end" "long n"
 .Sh DESCRIPTION
 .Nm libste
 provides five useful functions for dealing with strings.
@@ -95,6 +97,23 @@ if none was found.
 uses
 .Xr vsnprintf 3
 to write formatted output to
+.Fa dst ,
+but writes no characters beyond
+.Fa end .
+If any characters are written,
+.Fa dst
+will be NUL-terminated
+and the return value is a pointer to the NUL byte.
+On truncation,
+.Fa end
+is returned.
+.Pp
+.Nm steprl
+formats
+.Fa n
+as a decimal number
+.Pq potentially with a leading minus
+and appends it to
 .Fa dst ,
 but writes no characters beyond
 .Fa end .
