@@ -14,10 +14,11 @@ steprl(char *dst, char *end, long n)
 	if (neg)
 		n = -n;
 
-	if (!n)
-		*--s = '0';
-	for (; n > 0; n /= 10)
-		*--s = '0' + (n%10);
+	do {
+		*--s = '0' + (n % 10);
+		n /= 10;
+	} while (n > 0);
+
 	if (neg)
 		*--s = '-';
 
