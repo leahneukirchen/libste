@@ -16,7 +16,7 @@ is(const char *desc, int ok)
 int
 main()
 {
-	printf("1..49\n");
+	printf("1..55\n");
 
 	printf("# stecpy\n");
 
@@ -145,6 +145,19 @@ main()
 	is("buffer doesn't get fuller", strlen(buf) == 15);
 	is("return value is end", pos == end);
 
+	printf("# steprl\n");
+	pos = buf;
+	pos = steprl(pos, end, 12345);
+	is("12345 = 5", strlen(buf) == 5);
+	pos = steprl(pos, end, -9876);
+	is("-9876 = 10", strlen(buf) == 10);
+	pos = steprl(pos, end, 0);
+	is("0 = 11", strlen(buf) == 11);
+	pos = steprl(pos, end, 1);
+	is("1 = 12", strlen(buf) == 12);
+	pos = steprl(pos, end, 77777777);
+	is("77777777 = full", strlen(buf) == 15);
+	is("return value is end", pos == end);
 
 	return status;
 }
