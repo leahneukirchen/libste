@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <limits.h>
 
 #include "ste.h"
 
@@ -16,7 +17,7 @@ is(const char *desc, int ok)
 int
 main()
 {
-	printf("1..55\n");
+	printf("1..56\n");
 
 	printf("# stecpy\n");
 
@@ -158,6 +159,11 @@ main()
 	pos = steprl(pos, end, 77777777);
 	is("77777777 = full", strlen(buf) == 15);
 	is("return value is end", pos == end);
+
+	pos = buf2;
+	end = buf2 + sizeof buf2;
+	pos = steprl(pos, end, LONG_MIN);
+	is("can format LONG_MIN", buf2[0] == '-' && strlen(buf2) > 9);
 
 	return status;
 }

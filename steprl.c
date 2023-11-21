@@ -10,16 +10,14 @@ steprl(char *dst, char *end, long n)
 	char *bufend = buf + sizeof buf;
 	char *s = bufend;
 
-	int neg = n < 0;
-	if (neg)
-		n = -n;
+	unsigned long u = n < 0 ? -n : n;
 
 	do {
-		*--s = '0' + (n % 10);
-		n /= 10;
-	} while (n > 0);
+		*--s = '0' + (u % 10);
+		u /= 10;
+	} while (u);
 
-	if (neg)
+	if (n < 0)
 		*--s = '-';
 
 	return stecpe(dst, end, s, bufend);
